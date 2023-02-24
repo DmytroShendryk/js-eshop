@@ -18,112 +18,18 @@ document.querySelectorAll('.shop-cat').forEach(elem => elem.addEventListener("cl
       }
 }))
 
-let priceUl = document.querySelector('.price')
-document.querySelectorAll('.product').forEach(elem => elem.addEventListener("click",(event) => {
-    let prodId = event.target.dataset.prod;
-    let prodItm = document.querySelectorAll('.prodprice-item') 
-    if(prodId === "1"){
-        prodItm[0].classList.add('d-block');
-        prodItm[1].classList.remove('d-block')
-        prodItm[2].classList.remove('d-block')
-        prodItm[3].classList.remove('d-block')
-        prodItm[4].classList.remove('d-block')
-        prodItm[5].classList.remove('d-block')
-        prodItm[6].classList.remove('d-block')
-        prodItm[7].classList.remove('d-block')
-        prodItm[8].classList.remove('d-block')
+const productElements = document.querySelectorAll('.product');
+const prodPriceElements = document.querySelectorAll('.prodprice-item');
 
-    }else if(prodId === "2"){
-        prodItm[0].classList.remove('d-block')
-        prodItm[1].classList.add('d-block')
-        prodItm[2].classList.remove('d-block')
-        prodItm[3].classList.remove('d-block')
-        prodItm[4].classList.remove('d-block')
-        prodItm[5].classList.remove('d-block')
-        prodItm[6].classList.remove('d-block')
-        prodItm[7].classList.remove('d-block')
-        prodItm[8].classList.remove('d-block')
-
-    }else if(prodId === "3"){
-        prodItm[0].classList.remove('d-block')
-        prodItm[1].classList.remove('d-block')
-        prodItm[2].classList.add('d-block')
-        prodItm[3].classList.remove('d-block')
-        prodItm[4].classList.remove('d-block')
-        prodItm[5].classList.remove('d-block')
-        prodItm[6].classList.remove('d-block')
-        prodItm[7].classList.remove('d-block')
-        prodItm[8].classList.remove('d-block')
-
-    }else if(prodId === "4"){
-        prodItm[0].classList.remove('d-block')
-        prodItm[1].classList.remove('d-block')
-        prodItm[2].classList.remove('d-block')
-        prodItm[3].classList.add('d-block')
-        prodItm[4].classList.remove('d-block')
-        prodItm[5].classList.remove('d-block')
-        prodItm[6].classList.remove('d-block')
-        prodItm[7].classList.remove('d-block')
-        prodItm[8].classList.remove('d-block')
-
-    }else if(prodId === "5"){
-        prodItm[0].classList.remove('d-block')
-        prodItm[1].classList.remove('d-block')
-        prodItm[2].classList.remove('d-block')
-        prodItm[3].classList.remove('d-block')
-        prodItm[4].classList.add('d-block')
-        prodItm[5].classList.remove('d-block')
-        prodItm[6].classList.remove('d-block')
-        prodItm[7].classList.remove('d-block')
-        prodItm[8].classList.remove('d-block')
-
-    }else if(prodId === "6"){
-        prodItm[0].classList.remove('d-block')
-        prodItm[1].classList.remove('d-block')
-        prodItm[2].classList.remove('d-block')
-        prodItm[3].classList.remove('d-block')
-        prodItm[4].classList.remove('d-block')
-        prodItm[5].classList.add('d-block')
-        prodItm[6].classList.remove('d-block')
-        prodItm[7].classList.remove('d-block')
-        prodItm[8].classList.remove('d-block')
-
-    }else if(prodId === "7"){
-        prodItm[0].classList.remove('d-block')
-        prodItm[1].classList.remove('d-block')
-        prodItm[2].classList.remove('d-block')
-        prodItm[3].classList.remove('d-block')
-        prodItm[4].classList.remove('d-block')
-        prodItm[5].classList.remove('d-block')
-        prodItm[6].classList.add('d-block')
-        prodItm[7].classList.remove('d-block')
-        prodItm[8].classList.remove('d-block')
-
-    }else if(prodId === "8"){
-        prodItm[0].classList.remove('d-block')
-        prodItm[1].classList.remove('d-block')
-        prodItm[2].classList.remove('d-block')
-        prodItm[3].classList.remove('d-block')
-        prodItm[4].classList.remove('d-block')
-        prodItm[5].classList.remove('d-block')
-        prodItm[6].classList.remove('d-block')
-        prodItm[7].classList.add('d-block')
-        prodItm[8].classList.remove('d-block')
-
-    }else if(prodId === "9"){
-        prodItm[0].classList.remove('d-block')
-        prodItm[1].classList.remove('d-block')
-        prodItm[2].classList.remove('d-block')
-        prodItm[3].classList.remove('d-block')
-        prodItm[4].classList.remove('d-block')
-        prodItm[5].classList.remove('d-block')
-        prodItm[6].classList.remove('d-block')
-        prodItm[7].classList.remove('d-block')
-        prodItm[8].classList.add('d-block')
-    }
-}));
-
+productElements.forEach((productElement) => {
+  productElement.addEventListener('click', (event) => {
+    const prodId = event.target.dataset.prod;
+    prodPriceElements.forEach((prodPriceElement, index) => {
+      prodPriceElement.classList.toggle('d-block', index === prodId - 1);
+    });
+  });
+});
 const btn = document.querySelectorAll('.buy-product');
 btn.forEach(elem => elem.addEventListener('click', (event)=>{
-    event = window.alert('Thank You for buying!')
+    event = window.alert('Thank You for buying!');
 }))
